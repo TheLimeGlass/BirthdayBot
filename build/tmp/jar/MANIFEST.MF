@@ -1,0 +1,109 @@
+Manifest-Version: 1.0
+Class-Path: file:/C:/Users/Sean%20Grover/.gradle/caches/modules-2/file
+ s-2.1/com.github.austinv11/Discord4J/2.9.3/6848c251776abb743837199d6d
+ 75b29b79a7d301/Discord4J-2.9.3.jar file:/C:/Users/Sean%20Grover/.grad
+ le/caches/modules-2/files-2.1/org.reflections/reflections/0.9.11/23bb
+ a0ff497ec61fbca967d9b641c7681a71edb3/reflections-0.9.11.jar file:/C:/
+ Users/Sean%20Grover/.gradle/caches/modules-2/files-2.1/com.vdurmont/e
+ moji-java/4.0.0/b2de319e06192443ee273dd7e69d10b09ffb3442/emoji-java-4
+ .0.0.jar file:/C:/Users/Sean%20Grover/.gradle/caches/modules-2/files-
+ 2.1/joda-time/joda-time/2.10/f66c8125d1057ffce6c4e29e624cac863e110e2b
+ /joda-time-2.10.jar file:/C:/Users/Sean%20Grover/.gradle/caches/modul
+ es-2/files-2.1/org.apache.commons/commons-configuration2/2.2/5ee9a0c1
+ 4ac47e8c78d7f573bea1867f0d3b2894/commons-configuration2-2.2.jar file:
+ /C:/Users/Sean%20Grover/.gradle/caches/modules-2/files-2.1/org.apache
+ .commons/commons-lang3/3.7/557edd918fd41f9260963583ebf5a61a43a6b423/c
+ ommons-lang3-3.7.jar file:/C:/Users/Sean%20Grover/.gradle/caches/modu
+ les-2/files-2.1/commons-beanutils/commons-beanutils/1.9.2/7a87d845ad3
+ a155297e8f67d9008f4c1e5656b71/commons-beanutils-1.9.2.jar file:/C:/Us
+ ers/Sean%20Grover/.gradle/caches/modules-2/files-2.1/org.apache.commo
+ ns/commons-jexl/2.1.1/6ecc181debade00230aa1e17666c4ea0371beaaa/common
+ s-jexl-2.1.1.jar file:/C:/Users/Sean%20Grover/.gradle/caches/modules-
+ 2/files-2.1/org.apache.httpcomponents/httpmime/4.5.4/c3a4bf52f42ca74e
+ d3d6484d0a5b5f8f2fed13ea/httpmime-4.5.4.jar file:/C:/Users/Sean%20Gro
+ ver/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/http
+ client/4.5.4/2f8a3c0c53550b237d8f7a98a417397395af8b80/httpclient-4.5.
+ 4.jar file:/C:/Users/Sean%20Grover/.gradle/caches/modules-2/files-2.1
+ /commons-logging/commons-logging/1.2/4bfc12adfe4842bf07b657f0369c4cb5
+ 22955686/commons-logging-1.2.jar file:/C:/Users/Sean%20Grover/.gradle
+ /caches/modules-2/files-2.1/commons-codec/commons-codec/1.10/4b95f489
+ 7fa13f2cd904aee711aeafc0c5295cd8/commons-codec-1.10.jar file:/C:/User
+ s/Sean%20Grover/.gradle/caches/modules-2/files-2.1/commons-jxpath/com
+ mons-jxpath/1.3/c22d7d0f0f40eb7059a23cfa61773a416768b137/commons-jxpa
+ th-1.3.jar file:/C:/Users/Sean%20Grover/.gradle/caches/modules-2/file
+ s-2.1/org.slf4j/slf4j-api/1.7.25/da76ca59f6a57ee3102f8f9bd9cee742973e
+ fa8a/slf4j-api-1.7.25.jar file:/C:/Users/Sean%20Grover/.gradle/caches
+ /modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.8/70539e2
+ a07865bab38b4153da1ce599cf081790a/httpcore-4.4.8.jar file:/C:/Users/S
+ ean%20Grover/.gradle/caches/modules-2/files-2.1/commons-io/commons-io
+ /2.6/815893df5f31da2ece4040fe0a12fd44b577afaf/commons-io-2.6.jar file
+ :/C:/Users/Sean%20Grover/.gradle/caches/modules-2/files-2.1/org.eclip
+ se.jetty.websocket/websocket-client/9.4.8.v20171121/f83fc3fbd52109a57
+ d09b3ef88b715a36e8acdb4/websocket-client-9.4.8.v20171121.jar file:/C:
+ /Users/Sean%20Grover/.gradle/caches/modules-2/files-2.1/net.jodah/typ
+ etools/0.5.0/f61380c805c48c98305157e2543ca0bfc91583fe/typetools-0.5.0
+ .jar file:/C:/Users/Sean%20Grover/.gradle/caches/modules-2/files-2.1/
+ com.fasterxml.jackson.module/jackson-module-afterburner/2.9.2/1f542b9
+ 5562b748b54da58a1aab140ded15e42a8/jackson-module-afterburner-2.9.2.ja
+ r file:/C:/Users/Sean%20Grover/.gradle/caches/modules-2/files-2.1/net
+ .java.dev.jna/jna/4.5.0/55b548d3195efc5280bf1c3f17b49659c54dee40/jna-
+ 4.5.0.jar file:/C:/Users/Sean%20Grover/.gradle/caches/modules-2/files
+ -2.1/com.googlecode.soundlibs/mp3spi/1.9.5.4/3bdf9ffd65c157daec8735e1
+ 27c3705513bd384d/mp3spi-1.9.5.4.jar file:/C:/Users/Sean%20Grover/.gra
+ dle/caches/modules-2/files-2.1/org.jcraft/jorbis/0.0.17/8872d22b293e8
+ f5d7d56ff92be966e6dc28ebdc6/jorbis-0.0.17.jar file:/C:/Users/Sean%20G
+ rover/.gradle/caches/modules-2/files-2.1/org.jflac/jflac-codec/1.5.2/
+ 21da27e1fa32a059040c09d05e4265ac0cec95fa/jflac-codec-1.5.2.jar file:/
+ C:/Users/Sean%20Grover/.gradle/caches/modules-2/files-2.1/com.googlec
+ ode.soundlibs/tritonus-share/0.3.7.4/bdddc55194f9cf7b970dd5f3affcbacb
+ 88342b0b/tritonus-share-0.3.7.4.jar file:/C:/Users/Sean%20Grover/.gra
+ dle/caches/modules-2/files-2.1/org.tritonus/tritonus-dsp/0.3.6/fa2811
+ 353519d460913c32598b16ea10d13423dc/tritonus-dsp-0.3.6.jar file:/C:/Us
+ ers/Sean%20Grover/.gradle/caches/modules-2/files-2.1/com.koloboke/kol
+ oboke-impl-common-jdk8/1.0.0/7a47633f274105dc0a8c70e1f1d846874a092410
+ /koloboke-impl-common-jdk8-1.0.0.jar file:/C:/Users/Sean%20Grover/.gr
+ adle/caches/modules-2/files-2.1/com.google.guava/guava/20.0/895077012
+ 49388e1ed5ddcf8c41f4ce1be7831ef/guava-20.0.jar file:/C:/Users/Sean%20
+ Grover/.gradle/caches/modules-2/files-2.1/org.javassist/javassist/3.2
+ 1.0-GA/598244f595db5c5fb713731eddbb1c91a58d959b/javassist-3.21.0-GA.j
+ ar file:/C:/Users/Sean%20Grover/.gradle/caches/modules-2/files-2.1/or
+ g.json/json/20170516/949abe1460757b8dc9902c562f83e49675444572/json-20
+ 170516.jar file:/C:/Users/Sean%20Grover/.gradle/caches/modules-2/file
+ s-2.1/commons-collections/commons-collections/3.2.1/761ea405b9b37ced5
+ 73d2df0d1e3a4e0f9edc668/commons-collections-3.2.1.jar file:/C:/Users/
+ Sean%20Grover/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/je
+ tty-client/9.4.8.v20171121/e93cac2ce46e81ee8b36288cf7e19d3bac82d536/j
+ etty-client-9.4.8.v20171121.jar file:/C:/Users/Sean%20Grover/.gradle/
+ caches/modules-2/files-2.1/org.eclipse.jetty/jetty-xml/9.4.8.v2017112
+ 1/b0d6f87f580a9bd7fa9aaf9b7448bf63cf0ac34f/jetty-xml-9.4.8.v20171121.
+ jar file:/C:/Users/Sean%20Grover/.gradle/caches/modules-2/files-2.1/o
+ rg.eclipse.jetty.websocket/websocket-common/9.4.8.v20171121/82cd6d9ca
+ a68baf6557176159e6e5c37faed0e9b/websocket-common-9.4.8.v20171121.jar 
+ file:/C:/Users/Sean%20Grover/.gradle/caches/modules-2/files-2.1/org.e
+ clipse.jetty/jetty-http/9.4.8.v20171121/9879d6c4e37400bf43f0cd4b3c6e3
+ 4a3ba409864/jetty-http-9.4.8.v20171121.jar file:/C:/Users/Sean%20Grov
+ er/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-io/9.4.
+ 8.v20171121/d3fe2dfa62f52ee91ff07cb359f63387e0e30b40/jetty-io-9.4.8.v
+ 20171121.jar file:/C:/Users/Sean%20Grover/.gradle/caches/modules-2/fi
+ les-2.1/org.eclipse.jetty/jetty-util/9.4.8.v20171121/d6ec1a1613c7fa72
+ aa6bf5d8c204750afbc3df3b/jetty-util-9.4.8.v20171121.jar file:/C:/User
+ s/Sean%20Grover/.gradle/caches/modules-2/files-2.1/com.fasterxml.jack
+ son.core/jackson-databind/2.9.2/1d8d8cb7cf26920ba57fb61fa56da88cc123b
+ 21f/jackson-databind-2.9.2.jar file:/C:/Users/Sean%20Grover/.gradle/c
+ aches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.9
+ .2/aed20e50152a2f19adc1995c8d8f307c7efa414d/jackson-core-2.9.2.jar fi
+ le:/C:/Users/Sean%20Grover/.gradle/caches/modules-2/files-2.1/com.goo
+ glecode.soundlibs/jlayer/1.0.1.4/b8df07ad72b482f7d6e6dee7fed669385e8d
+ d92f/jlayer-1.0.1.4.jar file:/C:/Users/Sean%20Grover/.gradle/caches/m
+ odules-2/files-2.1/com.koloboke/koloboke-api-jdk8/1.0.0/266824ffd8d8c
+ 3ea57d2a1617b168a1195ee263c/koloboke-api-jdk8-1.0.0.jar file:/C:/User
+ s/Sean%20Grover/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.
+ websocket/websocket-api/9.4.8.v20171121/6d889f9a8b5fd2a573c6d1d518c7e
+ 119a6d8c170/websocket-api-9.4.8.v20171121.jar file:/C:/Users/Sean%20G
+ rover/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/j
+ ackson-annotations/2.9.0/7c10d545325e3a6e72e06381afe469fd40eb701/jack
+ son-annotations-2.9.0.jar file:/C:/Users/Sean%20Grover/.gradle/caches
+ /modules-2/files-2.1/junit/junit/3.8.2/7e4cde26b53a9a0e3fe5b00d1dbbc7
+ cc1d46060/junit-3.8.2.jar
+Main-Class: me.limeglass.birthdaybot.BirthdayBot
+
