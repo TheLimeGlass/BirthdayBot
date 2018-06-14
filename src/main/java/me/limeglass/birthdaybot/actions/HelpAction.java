@@ -17,9 +17,10 @@ public class HelpAction extends Action {
 		EmbedBuilder builder = new EmbedBuilder();
 		builder.withAuthorName("Birthday Bot Help Menu");
 		builder.withAuthorIcon("https://i.imgur.com/bMV38v8.png");
-		builder.appendField("Bot Information", "BirthdayBot is a bot that allows users to input their birthday and grant other users the ability to recognize when their birthday is.\n\n**Prefixes:** "
-				+ BirthdayBot.getClient().getOurUser().mention() + " and :tada:"
-				+ "               [] = optional arguments.               [Bot Invite](https://discordapp.com/api/oauth2/authorize?client_id=454773255824211968&permissions=1010035792&scope=bot)", false);
+		builder.appendField("Bot Information", "BirthdayBot is a bot that allows users to input their birthday and grant other users the ability to recognize when their birthday is."
+				+ "\n**Links:** [Bot Invite](https://discordapp.com/api/oauth2/authorize?client_id=454773255824211968&permissions=1010035792&scope=bot) [Source code](https://github.com/TheLimeGlass/BirthdayBot)"
+				+ "\n**Prefixes:** " + BirthdayBot.getClient().getOurUser().mention() + " and :tada:"
+				+ "               [] = optional arguments.", false);
 		builder.appendField(":tada: help", "Messages the help menu.", false);
 		builder.appendField(":tada: setup", "Setup the channels that " + BirthdayBot.getClient().getOurUser().mention() + " should be allocated too. Requires the role: `Birthday Handler`", false);
 		builder.appendField(":tada: set dd/mm/yyyy [user]",

@@ -62,24 +62,19 @@ public class SetAction extends Action {
 				}
 				builder.appendDescription(user.mention() + " - "
 						+ date.toString("MMMMMMMMM dd, yyyy")
-						+ " - (Next birthday falls on a **" + next.toString("EEEEEEEEE") + "**) (**" + days + " days until**)\n");
+						+ " - (Next birthday falls on **" + next.toString("EEEEEEEEE") + "**) (**" + days + " days until**)\n");
 				if (!message.isPresent()) RequestBuffer.request(() -> channel.sendMessage(builder.build()));
 				else {
 					IMessage msg = message.get();
 					IEmbed embed = msg.getEmbeds().get(0);
 					for (String line : embed.getDescription().split("\n")) {
 						if (!line.contains(user.mention())) {
-							String[] values = line.split(" - ");
-							DateTime lineDate = DateTimeFormat.forPattern("MMMMMMMMM dd, yyyy").parseDateTime(values[1]);
-							next = lineDate.withYear(DateTime.now().getYear());
-							if (next.isBeforeNow()) next = next.plusYears(1);
-							int userDays = Days.daysBetween(DateTime.now(), next).getDays() + 1;
-							builder.appendDescription(values[0] + " - " + values[1] + " - (Next birthday falls on a **" + lineDate.toString("EEEEEEEEE") + "**) (**" + userDays + " days until**)\n");
+							builder.appendDescription(line + "\n");
 						}
 					}
 					msg.edit(builder.build());
 				}
-				scheduledMessage(event.getChannel(), 60, "Birthday **" + date.toString("MMMMMMMMM dd, yyyy") + "** was added for " + user.mention());
+				scheduledMessage(event.getChannel(), 60, "Birthday **" + date.toString("MMMMMMMMM dd, yyyy") + "** was added for " + user.getName());
 				break;
 			}
 		}

@@ -3,9 +3,6 @@ package me.limeglass.birthdaybot.actions;
 import java.util.List;
 import java.util.Optional;
 
-import org.joda.time.DateTime;
-import org.joda.time.Days;
-import org.joda.time.format.DateTimeFormat;
 import me.limeglass.birthdaybot.BirthdayBot;
 import me.limeglass.birthdaybot.objects.Action;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
@@ -54,12 +51,7 @@ public class RemoveAction extends Action {
 					IEmbed embed = msg.getEmbeds().get(0);
 					for (String line : embed.getDescription().split("\n")) {
 						if (!line.contains(user.mention())) {
-							String[] values = line.split(" - ");
-							DateTime lineDate = DateTimeFormat.forPattern("MMMMMMMMM dd, yyyy").parseDateTime(values[1]);
-							DateTime next = lineDate.withYear(DateTime.now().getYear());
-							if (next.isBeforeNow()) next = next.plusYears(1);
-							int userDays = Days.daysBetween(DateTime.now(), next).getDays() + 1;
-							builder.appendDescription(values[0] + " - " + values[1] + " - (Next birthday falls on a **" + lineDate.toString("EEEEEEEEE") + "**) (**" + userDays + " days until**)\n");
+							builder.appendDescription(line + "\n");
 						}
 					}
 					msg.edit(builder.build());
