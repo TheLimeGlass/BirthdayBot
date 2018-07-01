@@ -46,6 +46,7 @@ public class BirthdayBot {
 		catch (ConfigurationException exception) {
 			exception.printStackTrace();
 		}
+		client = new Client(config.getString("client.token"));
         Timer timer = new Timer(true);
         TimerTask task = new UpdateTask();
         timer.scheduleAtFixedRate(task, 0, time + 1);
@@ -54,7 +55,6 @@ public class BirthdayBot {
             	timer.cancel();
             }
         });
-		client = new Client(config.getString("client.token"));
 	}
 	
 	public static IDiscordClient getClient() {

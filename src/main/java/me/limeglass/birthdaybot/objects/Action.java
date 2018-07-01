@@ -52,7 +52,7 @@ public abstract class Action {
 		return new MessageBuilder(BirthdayBot.getClient()).withChannel(channel).appendContent(content).build();
 	}
 	
-	protected void scheduledMessage(IChannel channel, long delay, String content) {
+	public void scheduledMessage(IChannel channel, long delay, String content) {
 		IMessage message = new MessageBuilder(BirthdayBot.getClient()).withChannel(channel).appendContent(content).build();
 		Executors.newScheduledThreadPool(1).schedule(() -> message.delete(), delay, TimeUnit.SECONDS);
 	}

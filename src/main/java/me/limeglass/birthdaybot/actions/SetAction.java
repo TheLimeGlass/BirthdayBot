@@ -62,7 +62,7 @@ public class SetAction extends Action {
 				}
 				builder.appendDescription(user.mention() + " - "
 						+ date.toString("MMMMMMMMM dd, yyyy")
-						+ " - (Next birthday falls on **" + next.toString("EEEEEEEEE") + "**) (**" + days + " days until**)\n");
+						+ " - (Birthday falls on a **" + next.toString("EEEEEEEEE") + "**) (**" + days + " days until**)\n");
 				if (!message.isPresent()) RequestBuffer.request(() -> channel.sendMessage(builder.build()));
 				else {
 					IMessage msg = message.get();

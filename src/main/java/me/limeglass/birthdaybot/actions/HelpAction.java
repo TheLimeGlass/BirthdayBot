@@ -17,8 +17,8 @@ public class HelpAction extends Action {
 		EmbedBuilder builder = new EmbedBuilder();
 		builder.withAuthorName("Birthday Bot Help Menu");
 		builder.withAuthorIcon("https://i.imgur.com/bMV38v8.png");
-		builder.appendField("Bot Information", "BirthdayBot is a bot that allows users to input their birthday and grant other users the ability to recognize when their birthday is."
-				+ "\n**Links:** [Bot Invite](https://discordapp.com/api/oauth2/authorize?client_id=454773255824211968&permissions=1010035792&scope=bot) [Source code](https://github.com/TheLimeGlass/BirthdayBot)"
+		builder.appendField("Bot Information", "BirthdayBot is a bot that allows users to input their birthday and grant other users the ability to recognize when their birthday is. If you setup BirthdayBot, you should have a dedicated channel for viewing birthdays and when a birthday happens it will broadcast that birthday in the main channel defined in the servers' settings."
+				+ "\n**Links:** [Bot Invite](https://discordapp.com/api/oauth2/authorize?client_id=454773255824211968&permissions=1010035792&scope=bot) and [Source code](https://github.com/TheLimeGlass/BirthdayBot)"
 				+ "\n**Prefixes:** " + BirthdayBot.getClient().getOurUser().mention() + " and :tada:"
 				+ "               [] = optional arguments.", false);
 		builder.appendField(":tada: help", "Messages the help menu.", false);

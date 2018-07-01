@@ -25,11 +25,10 @@ public class UpdateTask extends TimerTask {
 	@Override
 	public void run() {
 		try {
-			Thread.sleep(BirthdayBot.time);
 			for (IGuild guild : BirthdayBot.getClient().getGuilds()) {
 				loop : for (IChannel channel : guild.getChannels()) {
 					if (channel.getTopic() != null && channel.getTopic().contains(BirthdayBot.getClient().getOurUser().mention())) {
-						Optional<IMessage> message = channel.getFullMessageHistory().parallelStream()
+						Optional<IMessage> message = channel.getMessageHistory(1000).parallelStream()
 								.filter(msg -> msg.getAuthor().equals(BirthdayBot.getClient().getOurUser()))
 								.filter(msg -> !msg.getEmbeds().isEmpty())
 								.findFirst();
@@ -51,7 +50,7 @@ public class UpdateTask extends TimerTask {
 							}
 							for (Entry<String[], DateTime> sorted : sortByValue(dates).entrySet()) {
 								int userDays = Days.daysBetween(DateTime.now(), sorted.getValue()).getDays() + 1;
-								builder.appendDescription(sorted.getKey()[0] + " - " + sorted.getKey()[1] + " - (Next birthday falls on **" + sorted.getValue().toString("EEEEEEEEE") + "**) (**" + userDays + " days until**)\n");
+								builder.appendDescription(sorted.getKey()[0] + " - " + sorted.getKey()[1] + " - (Birthday falls on a **" + sorted.getValue().toString("EEEEEEEEE") + "**) (**" + userDays + " days until**)\n");
 							}
 							msg.edit(builder.build());
 							break;
@@ -59,6 +58,7 @@ public class UpdateTask extends TimerTask {
 					}
 				}
 			}
+			Thread.sleep(BirthdayBot.time);
 		} catch (InterruptedException e) {}
 	}
 	
