@@ -1,6 +1,6 @@
 eclipse.preferences.version=1
-encoding//src/main/java/me/limeglass/birthdaybot/actions/AdminAction.java=UTF-8
 encoding//src/main/java/me/limeglass/birthdaybot/actions/HelpAction.java=UTF-8
 encoding//src/main/java/me/limeglass/birthdaybot/actions/RemoveAction.java=UTF-8
 encoding//src/main/java/me/limeglass/birthdaybot/actions/SetAction.java=UTF-8
 encoding//src/main/java/me/limeglass/birthdaybot/actions/SetupAction.java=UTF-8
+encoding//src/main/java/me/limeglass/birthdaybot/actions/StatisticsAction.java=UTF-8
