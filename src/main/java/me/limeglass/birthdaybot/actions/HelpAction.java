@@ -25,10 +25,10 @@ public class HelpAction extends Action {
 		builder.appendField(":tada: setup", "Setup the channels that " + BirthdayBot.getClient().getOurUser().mention() + " should be allocated too. Requires the role: `Birthday Handler`", false);
 		builder.appendField(":tada: set dd/mm/yyyy [user]",
 				"The main command users use to set their birthday, the user argument is optional and requires the role: `Birthday Handler` to set a mentioned users birthday."
-				+ "\n➤ *Example:* :tada: `set 13/3/1995 @BirthdayBot`", false);
+				+ "\n> *Example:* :tada: `set 13/3/1995 @BirthdayBot`", false);
 		builder.appendField(":tada: remove [user]",
 				"Command for users to remove their birthday, the user argument is optional and requires the role: `Birthday Handler` to remove a mentioned users birthday."
-				+ "\n➤ *Example:* :tada: `remove @BirthdayBot`", false);
+				+ "\n> *Example:* :tada: `remove @BirthdayBot`", false);
 		builder.withColor(0, 255, 255);
 		RequestBuffer.request(() -> event.getChannel().sendMessage(builder.build()));
 	}

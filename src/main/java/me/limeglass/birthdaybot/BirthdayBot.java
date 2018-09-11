@@ -49,7 +49,7 @@ public class BirthdayBot {
 		client = new Client(config.getString("client.token"));
         Timer timer = new Timer(true);
         TimerTask task = new UpdateTask();
-        timer.scheduleAtFixedRate(task, 0, time + 1);
+        timer.scheduleAtFixedRate(task, 0, time);
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
             	timer.cancel();

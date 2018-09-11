@@ -67,6 +67,10 @@ public class SetAction extends Action {
 				else {
 					IMessage msg = message.get();
 					IEmbed embed = msg.getEmbeds().get(0);
+					if (embed.getDescription() == null) {
+						msg.edit(builder.build());
+						continue;
+					}
 					for (String line : embed.getDescription().split("\n")) {
 						if (!line.contains(user.mention())) {
 							builder.appendDescription(line + "\n");

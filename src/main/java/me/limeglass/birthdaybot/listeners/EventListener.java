@@ -10,14 +10,16 @@ import me.limeglass.birthdaybot.objects.Command;
 import sx.blah.discord.api.events.EventSubscriber;
 import sx.blah.discord.handle.impl.events.ReadyEvent;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
+import sx.blah.discord.handle.obj.ActivityType;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.handle.obj.IUser;
+import sx.blah.discord.handle.obj.StatusType;
 
 public class EventListener {
 
 	@EventSubscriber
 	public void onStartup(ReadyEvent event) {
-		BirthdayBot.getClient().changePlayingText(EmojiParser.parseToUnicode(BirthdayBot.getPrefix() + " help"));
+		BirthdayBot.getClient().changePresence(StatusType.ONLINE, ActivityType.WATCHING, EmojiParser.parseToUnicode(BirthdayBot.getPrefix() + " help"));
 	}
 	
 	@EventSubscriber
