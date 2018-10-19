@@ -12,10 +12,8 @@ import java.util.Optional;
 import java.util.TimeZone;
 import java.util.TimerTask;
 
-import org.apache.commons.configuration2.Configuration;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
-import org.joda.time.Seconds;
 import org.joda.time.format.DateTimeFormat;
 
 import me.limeglass.birthdaybot.BirthdayBot;
@@ -68,14 +66,18 @@ public class UpdateTask extends TimerTask {
 							DateTime date = sorted.getValue();
 							//Birthday updater
 							int days = Days.daysBetween(DateTime.now(), date).getDays() + 1;
-							builder.appendDescription(sorted.getKey()[0] + " - " + sorted.getKey()[1] + " - (Birthday falls on a **" + sorted.getValue().toString("EEEEEEEEE") + "**) (**" + days + " days until**)\n");
+							String next = sorted.getKey()[0] + " - " + sorted.getKey()[1] + " - (Birthday falls on a **" + sorted.getValue().toString("EEEEEEEEE") + "**) (**" + days + " days until**)\n";
+							if (builder.getTotalVisibleCharacters() <= EmbedBuilder.MAX_CHAR_LIMIT - next.length())
+								builder.appendDescription(next);
 							//Birthday broadcaster
-							Seconds seconds = Seconds.secondsBetween(DateTime.now(), date);
-							if (seconds.getSeconds() <= 1) {
+							/*Seconds seconds = Seconds.secondsBetween(DateTime.now(), date);
+							if (sorted.getKey()[0].contains("LimeGlass")) {
+								System.out.print("Test worked");
+							}
+							if (seconds.getSeconds() <= 500) {
 								Configuration configuration = BirthdayBot.getConfiguration();
 								Object object = configuration.getProperties(guild.getStringID());
 								if (object == null) {
-									//flawed
 									configuration.setProperty(guild.getStringID(), seconds.getSeconds() + ":" + sorted.getKey()[0]);
 								} else {
 									String input = (String) object;
@@ -84,18 +86,25 @@ public class UpdateTask extends TimerTask {
 										configuration.setProperty(guild.getStringID(), null);
 										continue;
 									}
+									//Seconds last = Seconds.parseSeconds(data[0]);
+									if (sorted.getKey()[0].equals(data[1])) {
+										System.out.print("The user is " + data[1]);
+									}
+									
 									long milliseconds = Long.parseLong(data[0]);
 									//flawed
 									if (System.currentTimeMillis() - milliseconds >= 0) {
 										
 									}
 								}
-							}
+							}*/
 						}
 						SimpleDateFormat formatter = new SimpleDateFormat("MMMMM d, yyyy '**at**' hh:mm aaa");
 						formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-						builder.appendDescription("\n*Last updated: **" + formatter.format(Date.from(embed.getTimestamp())) + "** UTC*\n");
-						builder.appendDescription("\n**Source code/Report issues**: https://github.com/TheLimeGlass/BirthdayBot");
+						String footer = "\n*Last updated: **" + formatter.format(Date.from(embed.getTimestamp())) + "** UTC*\n" +
+								"\n**Source code/Report issues**: https://github.com/TheLimeGlass/BirthdayBot";
+						if (builder.getTotalVisibleCharacters() <= EmbedBuilder.MAX_CHAR_LIMIT - footer.length())
+							builder.appendDescription(footer);
 						msg.edit(builder.build());
 						break;
 					}
