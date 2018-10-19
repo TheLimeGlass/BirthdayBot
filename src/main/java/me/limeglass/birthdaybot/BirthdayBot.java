@@ -18,8 +18,8 @@ import sx.blah.discord.util.MessageBuilder;
 public class BirthdayBot {
 	
 	private final static String prefix = ":tada:";
-	public final static int time = 6000;
 	private static Boolean debug = false;
+	public final static int time = 24000;
 	private static Configuration config;
 	private static Client client;
 	

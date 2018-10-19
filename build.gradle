@@ -6,11 +6,7 @@ repositories {
     maven {
         url "https://jitpack.io"
     }
-    
-    //Joda-Time
-    //maven {
-    //    url url "https://mvnrepository.com/artifact/joda-time/joda-time"
-    //}
+   
 }
 
 mainClassName = 'me.limeglass.birthdaybot.BirthdayBot'
@@ -26,6 +22,10 @@ dependencies {
     
     //emoji library that Discord4j uses
     compile 'com.vdurmont:emoji-java:4.0.0'
+    
+    //Noodle
+    compile 'com.github.nolia:Noodle:master-SNAPSHOT'
+    //compile 'com.github.nolia:Noodle:v0.5'
     
     //Joda-Time
     compile 'joda-time:joda-time:2.10'

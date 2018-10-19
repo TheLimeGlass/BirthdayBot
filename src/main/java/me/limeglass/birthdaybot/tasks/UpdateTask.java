@@ -12,8 +12,10 @@ import java.util.Optional;
 import java.util.TimeZone;
 import java.util.TimerTask;
 
+import org.apache.commons.configuration2.Configuration;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
+import org.joda.time.Seconds;
 import org.joda.time.format.DateTimeFormat;
 
 import me.limeglass.birthdaybot.BirthdayBot;
@@ -30,11 +32,13 @@ public class UpdateTask extends TimerTask {
 		for (IGuild guild : BirthdayBot.getClient().getGuilds()) {
 			for (IChannel channel : guild.getChannels()) {
 				if (channel.getTopic() != null && channel.getTopic().contains(BirthdayBot.getClient().getOurUser().mention())) {
-					Optional<IMessage> message = channel.getMessageHistory(10000).parallelStream()
+					//Grab existing embed
+					Optional<IMessage> message = channel.getMessageHistory(1000).parallelStream()
 							.filter(msg -> msg.getAuthor().equals(BirthdayBot.getClient().getOurUser()))
 							.filter(msg -> !msg.getEmbeds().isEmpty())
 							.findFirst();
 					if (message.isPresent()) {
+						//Setup the embed
 						EmbedBuilder builder = new EmbedBuilder();
 						builder.withColor(0, 255, 255);
 						builder.withAuthorName("Birthdays");
@@ -45,6 +49,7 @@ public class UpdateTask extends TimerTask {
 							msg.delete();
 							continue;
 						}
+						//Birthday getter and formatter
 						Map<String[], DateTime> dates = new HashMap<String[], DateTime>();
 						String[] lines = embed.getDescription().split("\n");
 						if (lines.length > 1) {
@@ -58,15 +63,38 @@ public class UpdateTask extends TimerTask {
 								}
 							}
 						}
+						//Loop sorted birthdays
 						for (Entry<String[], DateTime> sorted : sortByValue(dates).entrySet()) {
-							int days = Days.daysBetween(DateTime.now(), sorted.getValue()).getDays() + 1;
+							DateTime date = sorted.getValue();
+							//Birthday updater
+							int days = Days.daysBetween(DateTime.now(), date).getDays() + 1;
 							builder.appendDescription(sorted.getKey()[0] + " - " + sorted.getKey()[1] + " - (Birthday falls on a **" + sorted.getValue().toString("EEEEEEEEE") + "**) (**" + days + " days until**)\n");
+							//Birthday broadcaster
+							Seconds seconds = Seconds.secondsBetween(DateTime.now(), date);
+							if (seconds.getSeconds() <= 1) {
+								Configuration configuration = BirthdayBot.getConfiguration();
+								Object object = configuration.getProperties(guild.getStringID());
+								if (object == null) {
+									//flawed
+									configuration.setProperty(guild.getStringID(), seconds.getSeconds() + ":" + sorted.getKey()[0]);
+								} else {
+									String input = (String) object;
+									String[] data = input.split(":", 1);
+									if (data.length <= 1) {
+										configuration.setProperty(guild.getStringID(), null);
+										continue;
+									}
+									long milliseconds = Long.parseLong(data[0]);
+									//flawed
+									if (System.currentTimeMillis() - milliseconds >= 0) {
+										
+									}
+								}
+							}
 						}
 						SimpleDateFormat formatter = new SimpleDateFormat("MMMMM d, yyyy '**at**' hh:mm aaa");
 						formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 						builder.appendDescription("\n*Last updated: **" + formatter.format(Date.from(embed.getTimestamp())) + "** UTC*\n");
-						builder.appendDescription("\n**Latest BirthdayBot news**: Discord4J recently updated and broke past compatibility, breaking stored Birthdays." +
-								" You will need to update the birthdays or remove the bot from your server if you disagree with the update. Sorry for any inconvenience. On the plus side, BirthdayBot got a noice update :thumbsup: More dope features coming soon.\n**Sincerely, The BirthdayBot developers**\n");
 						builder.appendDescription("\n**Source code/Report issues**: https://github.com/TheLimeGlass/BirthdayBot");
 						msg.edit(builder.build());
 						break;
