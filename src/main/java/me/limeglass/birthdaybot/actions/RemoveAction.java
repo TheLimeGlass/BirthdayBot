@@ -12,6 +12,7 @@ import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.handle.obj.IRole;
 import sx.blah.discord.handle.obj.IUser;
 import sx.blah.discord.util.EmbedBuilder;
+import sx.blah.discord.util.RequestBuffer;
 
 public class RemoveAction extends Action {
 	
@@ -54,7 +55,7 @@ public class RemoveAction extends Action {
 							builder.appendDescription(line + "\n");
 						}
 					}
-					msg.edit(builder.build());
+					RequestBuffer.request(() -> msg.edit(builder.build()));
 				}
 				scheduledMessage(event.getChannel(), 60, "Birthday for user **" + user.getName() + "** was removed.");
 				break;

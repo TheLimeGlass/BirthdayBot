@@ -76,7 +76,7 @@ public class SetAction extends Action {
 							builder.appendDescription(line + "\n");
 						}
 					}
-					msg.edit(builder.build());
+					RequestBuffer.request(() -> msg.edit(builder.build()));
 				}
 				scheduledMessage(event.getChannel(), 60, "Birthday **" + date.toString("MMMMMMMMM dd, yyyy") + "** was added for " + user.getName());
 				break;

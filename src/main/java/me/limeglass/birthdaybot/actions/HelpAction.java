@@ -1,8 +1,11 @@
 package me.limeglass.birthdaybot.actions;
 
+import com.vdurmont.emoji.EmojiManager;
+
 import me.limeglass.birthdaybot.BirthdayBot;
 import me.limeglass.birthdaybot.objects.Action;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
+import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.util.EmbedBuilder;
 import sx.blah.discord.util.RequestBuffer;
 
@@ -30,6 +33,10 @@ public class HelpAction extends Action {
 				"Command for users to remove their birthday, the user argument is optional and requires the role: `Birthday Handler` to remove a mentioned users birthday."
 				+ "\n> *Example:* :tada: `remove @BirthdayBot`", false);
 		builder.withColor(0, 255, 255);
-		RequestBuffer.request(() -> event.getChannel().sendMessage(builder.build()));
+		IMessage message = RequestBuffer.request(() -> {
+			return event.getChannel().sendMessage(builder.build());
+		}).get();
+		RequestBuffer.request(() -> message.addReaction(EmojiManager.getForAlias(":arrow_left:")));
+		RequestBuffer.request(() -> message.addReaction(EmojiManager.getForAlias(":arrow_right:")));
 	}
 }

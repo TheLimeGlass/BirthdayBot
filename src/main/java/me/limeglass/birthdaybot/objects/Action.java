@@ -16,6 +16,7 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
 import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.util.MessageBuilder;
+import sx.blah.discord.util.RequestBuffer;
 
 public abstract class Action {
 
@@ -53,8 +54,10 @@ public abstract class Action {
 	}
 	
 	public void scheduledMessage(IChannel channel, long delay, String content) {
-		IMessage message = new MessageBuilder(BirthdayBot.getClient()).withChannel(channel).appendContent(content).build();
-		Executors.newScheduledThreadPool(1).schedule(() -> message.delete(), delay, TimeUnit.SECONDS);
+		RequestBuffer.request(() -> {
+			IMessage message = new MessageBuilder(BirthdayBot.getClient()).withChannel(channel).appendContent(content).build();
+			Executors.newScheduledThreadPool(1).schedule(() -> message.delete(), delay, TimeUnit.SECONDS);
+		});
 	}
 	
 	public abstract void onActionCall(final String action, final MessageReceivedEvent event, final String[] parameters);

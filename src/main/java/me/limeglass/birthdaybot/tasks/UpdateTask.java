@@ -22,6 +22,7 @@ import sx.blah.discord.handle.obj.IEmbed;
 import sx.blah.discord.handle.obj.IGuild;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.util.EmbedBuilder;
+import sx.blah.discord.util.RequestBuffer;
 
 public class UpdateTask extends TimerTask {
 
@@ -105,7 +106,7 @@ public class UpdateTask extends TimerTask {
 								"\n**Source code/Report issues**: https://github.com/TheLimeGlass/BirthdayBot";
 						if (builder.getTotalVisibleCharacters() <= EmbedBuilder.MAX_CHAR_LIMIT - footer.length())
 							builder.appendDescription(footer);
-						msg.edit(builder.build());
+						RequestBuffer.request(() -> msg.edit(builder.build()));
 						break;
 					}
 				}

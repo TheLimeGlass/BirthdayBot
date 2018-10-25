@@ -10,6 +10,7 @@ import me.limeglass.birthdaybot.objects.Command;
 import sx.blah.discord.api.events.EventSubscriber;
 import sx.blah.discord.handle.impl.events.ReadyEvent;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
+import sx.blah.discord.handle.impl.events.guild.channel.message.reaction.ReactionAddEvent;
 import sx.blah.discord.handle.obj.ActivityType;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.handle.obj.IUser;
@@ -39,4 +40,27 @@ public class EventListener {
 			new Command(event, content);
 		}
 	}
+	
+	@EventSubscriber
+	public void onReactionAddEvent(ReactionAddEvent event) {
+		return;
+		/*if (event.getAuthor() == BirthdayBot.getClient().getOurUser()) {
+			System.out.println("test reaction0 " + event.getReaction().getEmoji().getName());
+			System.out.println("test reaction1 " + event.getReaction().getEmoji().getLongID());
+			if (event.getReaction().getEmoji().getName().equals(":arrow_right:")) {
+				System.out.println("test reaction2");
+				List<IEmbed> embeds = event.getMessage().getEmbeds();
+				if (embeds != null && embeds.size() > 0) {
+					IEmbed embed = embeds.get(0);
+					System.out.println("test reaction3");
+					if (embed != null && embed.getAuthor().getName().equals("Birthday Bot Help Menu")) {
+						System.out.println("test reaction4");
+						event.getMessage().removeReaction(event.getUser(), event.getReaction().getEmoji());
+					}
+				}
+			}
+		}
+		*/
+	}
+
 }
