@@ -54,7 +54,10 @@ public class SetupAction extends Action {
 					case 2:
 						if (!message.getChannelMentions().isEmpty()) {
 							IChannel channel = event.getMessage().getChannelMentions().get(0);
-							channel.changeTopic(channel.getTopic() + "\n\nBirthdays channel.\nYou can view everyones birthdays from this channel.\n\n\n\nPlease do not modify this topic or else " + BirthdayBot.getClient().getOurUser().mention() + " will not be able to function properly.");
+							String topic = channel.getTopic();
+							if (topic == null)
+								topic = "";
+							channel.changeTopic(topic + "\n\nBirthdays channel.\nYou can view everyones birthdays from this channel.\n\n\n\nPlease do not modify this topic or else " + BirthdayBot.getClient().getOurUser().mention() + " will not be able to function properly.");
 							message(event.getChannel(), "The main birthday channel has been set to " + channel.mention() + ".");
 							storage.remove(author);
 						}
