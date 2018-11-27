@@ -25,10 +25,10 @@ public class RemoveAction extends Action {
 		if (parameters == null) return;
 		for (IChannel channel : event.getGuild().getChannels()) {
 			if (channel.getTopic() != null && channel.getTopic().contains(BirthdayBot.getClient().getOurUser().mention())) {
-				Optional<IMessage> message = channel.getFullMessageHistory().parallelStream()
+				Optional<IMessage> message = RequestBuffer.request(() -> channel.getFullMessageHistory().parallelStream()
 						.filter(msg -> msg.getAuthor().equals(BirthdayBot.getClient().getOurUser()))
 						.filter(msg -> !msg.getEmbeds().isEmpty())
-						.findFirst();
+						.findFirst()).get();
 				IUser user = event.getAuthor();
 				List<IUser> mentions = event.getMessage().getMentions();
 				if (!mentions.isEmpty()) {

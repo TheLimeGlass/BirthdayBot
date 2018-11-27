@@ -13,6 +13,8 @@ import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.handle.obj.IRole;
 import sx.blah.discord.handle.obj.IUser;
+import sx.blah.discord.handle.obj.Permissions;
+import sx.blah.discord.util.PermissionUtils;
 
 public class SetupAction extends Action {
 
@@ -31,6 +33,18 @@ public class SetupAction extends Action {
 			return;
 		}
 		IUser author = event.getAuthor();
+		IMessage message = event.getMessage();
+		if (!message.getChannelMentions().isEmpty()) {
+			IChannel channel = event.getMessage().getChannelMentions().get(0);
+			if (!PermissionUtils.hasPermissions(channel, BirthdayBot.getClient().getOurUser(), Permissions.MANAGE_CHANNELS, Permissions.MANAGE_CHANNEL)) {
+				message(event.getChannel(), "BirthdayBot doesn't have permission to edit the topic of channel " + channel.mention() + ".");
+				return;
+			}
+			if (!PermissionUtils.hasPermissions(event.getGuild(), BirthdayBot.getClient().getOurUser(), Permissions.EMBED_LINKS)) {
+				message(event.getChannel(), "BirthdayBot doesn't have permission to create embed links, aborting setup.");
+				return;
+			}
+		}
 		for (IRole role : roles) {
 			if (author.hasRole(role) || event.getGuild().getOwner().equals(author)) {
 				switch (update(author)) {
@@ -38,10 +52,9 @@ public class SetupAction extends Action {
 						scheduledMessage(event.getChannel(), 60, "Setup the channel that you would like the Birthdays to be stored in (BirthdayBot makes a list of everyones birthday). Better to be in it's own channel. Type **:tada: setup #channel-mention**");
 						return;
 					case 2:
-						IMessage message = event.getMessage();
 						if (!message.getChannelMentions().isEmpty()) {
 							IChannel channel = event.getMessage().getChannelMentions().get(0);
-							channel.changeTopic("Birthdays channel.\nYou can view everyones birthdays from this channel.\n\n\n\nPlease do not modify this topic or else " + BirthdayBot.getClient().getOurUser().mention() + " will not be able to function properly.");
+							channel.changeTopic(channel.getTopic() + "\n\nBirthdays channel.\nYou can view everyones birthdays from this channel.\n\n\n\nPlease do not modify this topic or else " + BirthdayBot.getClient().getOurUser().mention() + " will not be able to function properly.");
 							message(event.getChannel(), "The main birthday channel has been set to " + channel.mention() + ".");
 							storage.remove(author);
 						}

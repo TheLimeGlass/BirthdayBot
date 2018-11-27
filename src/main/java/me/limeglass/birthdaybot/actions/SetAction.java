@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.joda.time.DateTime;
 import org.joda.time.Days;
-import org.joda.time.IllegalFieldValueException;
 import org.joda.time.format.DateTimeFormat;
 import me.limeglass.birthdaybot.BirthdayBot;
 import me.limeglass.birthdaybot.objects.Action;
@@ -15,7 +14,9 @@ import sx.blah.discord.handle.obj.IEmbed;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.handle.obj.IRole;
 import sx.blah.discord.handle.obj.IUser;
+import sx.blah.discord.handle.obj.Permissions;
 import sx.blah.discord.util.EmbedBuilder;
+import sx.blah.discord.util.PermissionUtils;
 import sx.blah.discord.util.RequestBuffer;
 
 public class SetAction extends Action {
@@ -30,16 +31,16 @@ public class SetAction extends Action {
 		DateTime date = null;
 		try {
 			date = DateTimeFormat.forPattern("dd/MM/yyyy").parseDateTime(parameters[0]);
-		} catch (IllegalFieldValueException error) {
+		} catch (IllegalArgumentException error) {
 			scheduledMessage(event.getChannel(), 60, "Birthday **" + parameters[0] + "** is invalid, make sure the date format matches dd/mm/yyyy");
 			return;
 		}
 		for (IChannel channel : event.getGuild().getChannels()) {
 			if (channel.getTopic() != null && channel.getTopic().contains(BirthdayBot.getClient().getOurUser().mention())) {
-				Optional<IMessage> message = channel.getFullMessageHistory().parallelStream()
+				Optional<IMessage> message = RequestBuffer.request(() -> channel.getFullMessageHistory().parallelStream()
 						.filter(msg -> msg.getAuthor().equals(BirthdayBot.getClient().getOurUser()))
 						.filter(msg -> !msg.getEmbeds().isEmpty())
-						.findFirst();
+						.findFirst()).get();
 				EmbedBuilder builder = new EmbedBuilder();
 				builder.withColor(0, 255, 255);
 				builder.withAuthorName("Birthdays");
@@ -75,6 +76,10 @@ public class SetAction extends Action {
 						if (!line.contains(user.mention())) {
 							builder.appendDescription(line + "\n");
 						}
+					}
+					if (!PermissionUtils.hasPermissions(event.getGuild(), BirthdayBot.getClient().getOurUser(), Permissions.EMBED_LINKS)) {
+						message(event.getChannel(), "BirthdayBot doesn't have permission to create embed links, aborting set action.");
+						return;
 					}
 					RequestBuffer.request(() -> msg.edit(builder.build()));
 				}
