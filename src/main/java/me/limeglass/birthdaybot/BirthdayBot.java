@@ -31,14 +31,14 @@ public class BirthdayBot {
 			exception.printStackTrace();
 		}
 		client = new Client(config.getString("client.token"));
-        Timer timer = new Timer(true);
-        TimerTask task = new UpdateTask();
-        timer.scheduleAtFixedRate(task, 0, time);
-        Runtime.getRuntime().addShutdownHook(new Thread() {
-            public void run() {
-            	timer.cancel();
-            }
-        });
+		Timer timer = new Timer(true);
+		TimerTask task = new UpdateTask();
+		timer.scheduleAtFixedRate(task, 0, time);
+		Runtime.getRuntime().addShutdownHook(new Thread() {
+			public void run() {
+				timer.cancel();
+			}
+		});
 	}
 	
 	public static IDiscordClient getClient() {
