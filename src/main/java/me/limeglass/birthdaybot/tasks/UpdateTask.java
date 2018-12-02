@@ -32,10 +32,10 @@ public class UpdateTask extends TimerTask {
 			for (IChannel channel : guild.getChannels()) {
 				if (channel.getTopic() != null && channel.getTopic().contains(BirthdayBot.getClient().getOurUser().mention())) {
 					//Grab existing embed
-					Optional<IMessage> message = channel.getMessageHistory(1000).parallelStream()
+					Optional<IMessage> message = RequestBuffer.request(() -> channel.getFullMessageHistory().parallelStream()
 							.filter(msg -> msg.getAuthor().equals(BirthdayBot.getClient().getOurUser()))
 							.filter(msg -> !msg.getEmbeds().isEmpty())
-							.findFirst();
+							.findFirst()).get();
 					if (message.isPresent()) {
 						//Setup the embed
 						EmbedBuilder builder = new EmbedBuilder();

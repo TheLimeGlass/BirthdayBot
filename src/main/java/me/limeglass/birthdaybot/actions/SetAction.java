@@ -74,7 +74,10 @@ public class SetAction extends Action {
 					}
 					for (String line : embed.getDescription().split("\n")) {
 						if (!line.contains(user.mention())) {
-							builder.appendDescription(line + "\n");
+							String toAdd = line + "\n";
+							if (builder.getTotalVisibleCharacters() <= EmbedBuilder.MAX_CHAR_LIMIT - toAdd.length()) {
+								builder.appendDescription(toAdd);
+							}
 						}
 					}
 					if (!PermissionUtils.hasPermissions(event.getGuild(), BirthdayBot.getClient().getOurUser(), Permissions.EMBED_LINKS)) {
