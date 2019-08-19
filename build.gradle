@@ -24,7 +24,7 @@ dependencies {
     compile 'com.vdurmont:emoji-java:4.0.0'
     
     //Noodle
-    compile 'com.github.nolia:Noodle:master-SNAPSHOT'
+    compile 'com.github.nolia:Noodle:0.5'
     //compile 'com.github.nolia:Noodle:v0.5'
     
     //Joda-Time
