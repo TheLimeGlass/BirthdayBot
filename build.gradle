@@ -21,7 +21,7 @@ dependencies {
 	compile 'org.reflections:reflections:0.9.11'
 	
 	//emoji library that Discord4j uses
-	compile 'com.vdurmont:emoji-java:4.0.0'
+	compile 'com.vdurmont:emoji-java:5.1.1'
 	
 	//Noodle
 	compile 'com.github.nolia:Noodle:master-SNAPSHOT'
