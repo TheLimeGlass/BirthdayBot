@@ -36,7 +36,9 @@ public class HelpAction extends Action {
 		IMessage message = RequestBuffer.request(() -> {
 			return event.getChannel().sendMessage(builder.build());
 		}).get();
-		RequestBuffer.request(() -> message.addReaction(EmojiManager.getForAlias(":arrow_left:")));
-		RequestBuffer.request(() -> message.addReaction(EmojiManager.getForAlias(":arrow_right:")));
+		if (message != null) {
+			RequestBuffer.request(() -> message.addReaction(EmojiManager.getForAlias(":arrow_left:")));
+			RequestBuffer.request(() -> message.addReaction(EmojiManager.getForAlias(":arrow_right:")));
+		}
 	}
 }

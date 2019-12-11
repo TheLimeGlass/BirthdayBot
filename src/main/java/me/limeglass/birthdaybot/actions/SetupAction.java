@@ -26,7 +26,8 @@ public class SetupAction extends Action {
 	
 	@Override
 	public void onActionCall(String action, MessageReceivedEvent event, String[] parameters) {
-		if (parameters == null) return;
+		if (parameters == null || !PermissionUtils.hasPermissions(event.getChannel(), BirthdayBot.getClient().getOurUser(), Permissions.SEND_MESSAGES))
+			return;
 		List<IRole> roles = event.getGuild().getRolesByName("Birthday Handler");
 		if (roles.isEmpty()) {
 			message(event.getChannel(), "There was no role found named `Birthday Handler`. You will need to create this role and grant it to yourself (unless owner) for this command to work.");

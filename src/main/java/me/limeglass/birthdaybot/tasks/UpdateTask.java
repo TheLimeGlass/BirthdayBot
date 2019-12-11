@@ -21,7 +21,9 @@ import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.handle.obj.IEmbed;
 import sx.blah.discord.handle.obj.IGuild;
 import sx.blah.discord.handle.obj.IMessage;
+import sx.blah.discord.handle.obj.Permissions;
 import sx.blah.discord.util.EmbedBuilder;
+import sx.blah.discord.util.PermissionUtils;
 import sx.blah.discord.util.RequestBuffer;
 
 public class UpdateTask extends TimerTask {
@@ -32,10 +34,15 @@ public class UpdateTask extends TimerTask {
 			for (IChannel channel : guild.getChannels()) {
 				if (channel.getTopic() != null && channel.getTopic().contains(BirthdayBot.getClient().getOurUser().mention())) {
 					//Grab existing embed
+					if (!PermissionUtils.hasPermissions(channel, BirthdayBot.getClient().getOurUser(), Permissions.READ_MESSAGES)) {
+						continue;
+					}
 					Optional<IMessage> message = RequestBuffer.request(() -> channel.getFullMessageHistory().parallelStream()
 							.filter(msg -> msg.getAuthor().equals(BirthdayBot.getClient().getOurUser()))
 							.filter(msg -> !msg.getEmbeds().isEmpty())
 							.findFirst()).get();
+					if (message == null)
+						continue;
 					if (message.isPresent()) {
 						//Setup the embed
 						EmbedBuilder builder = new EmbedBuilder();

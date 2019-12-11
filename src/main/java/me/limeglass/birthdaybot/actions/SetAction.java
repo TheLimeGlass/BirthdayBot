@@ -75,7 +75,7 @@ public class SetAction extends Action {
 					for (String line : embed.getDescription().split("\n")) {
 						if (!line.contains(user.mention())) {
 							String toAdd = line + "\n";
-							if (builder.getTotalVisibleCharacters() <= EmbedBuilder.MAX_CHAR_LIMIT - toAdd.length()) {
+							if (builder.getTotalVisibleCharacters() + toAdd.length() <= EmbedBuilder.MAX_CHAR_LIMIT) {
 								builder.appendDescription(toAdd);
 							}
 						}
