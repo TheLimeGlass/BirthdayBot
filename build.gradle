@@ -18,7 +18,7 @@ dependencies {
 	//api "ch.qos.logback:logback-classic:1.2.3"
 	
 	// Reflections
-	compile 'org.reflections:reflections:0.9.11'
+	compile 'org.reflections:reflections:0.9.12'
 	
 	//emoji library that Discord4j uses
 	compile 'com.vdurmont:emoji-java:4.0.0'
