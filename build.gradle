@@ -28,7 +28,7 @@ dependencies {
 	//compile 'com.github.nolia:Noodle:v0.5'
 	
 	//Joda-Time
-	compile 'joda-time:joda-time:2.10'
+	compile 'joda-time:joda-time:2.10.8'
 	
 	// Configurations
 	compile 'org.apache.commons:commons-configuration2:2.2'
