@@ -14,7 +14,7 @@ mainClassName = 'me.limeglass.birthdaybot.BirthdayBot'
 dependencies {
 	
 	// Discord4J
-	compile "com.github.austinv11:Discord4J:2.10.1"
+	compile "com.github.austinv11:Discord4J:3.1.5"
 	//api "ch.qos.logback:logback-classic:1.2.3"
 	
 	// Reflections
